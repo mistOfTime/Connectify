@@ -3,13 +3,15 @@
 import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Home, MessageSquare, Mic, Users, Shield, LogOut, User, LogIn } from 'lucide-react';
+import { Home, MessageSquare, Mic, Users, Shield, LogOut, User, LogIn, ShieldAlert } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import { useUser, useAuth, useFirestore, useDoc } from '@/firebase';
 import { signOut } from 'firebase/auth';
 import { doc } from 'firebase/firestore';
 import { toast } from '@/hooks/use-toast';
+
+const ADMIN_UID = 'S6iKp12qgqbcvuYt15NVnITQ1q22';
 
 const navItems = [
   { name: 'Home',       href: '/',            icon: Home },
@@ -91,6 +93,13 @@ export function AppNav({ children }: { children: React.ReactNode }) {
                 <p className="text-[10px] text-muted-foreground truncate max-w-[120px]">{user.email}</p>
               </div>
             </Link>
+            {user.uid === ADMIN_UID && (
+              <Link href="/admin"
+                className={cn("flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium transition-all",
+                  pathname === '/admin' ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground hover:bg-muted")}>
+                <ShieldAlert size={15} /> Admin
+              </Link>
+            )}
             <button onClick={handleLogout}
               className="p-2 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors"
               title="Logout">

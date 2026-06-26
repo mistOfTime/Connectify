@@ -50,7 +50,7 @@ export function ReportModal({ isOpen, onClose, onSubmit, reportedName }: ReportM
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative w-full sm:max-w-md bg-background rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden mx-0 sm:mx-4 z-10">
+      <div className="relative w-full sm:max-w-md bg-background rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden mx-0 sm:mx-4 z-10 max-h-[85vh] overflow-y-auto">
         {/* Header */}
         <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b">
           <div className="flex items-center gap-2.5">
@@ -80,20 +80,20 @@ export function ReportModal({ isOpen, onClose, onSubmit, reportedName }: ReportM
             {/* Reason selection */}
             <div>
               <p className="text-sm font-semibold mb-2.5">What's the issue?</p>
-              <div className="grid grid-cols-1 gap-2">
+              <div className="grid grid-cols-2 gap-1.5">
                 {REASONS.map(reason => (
                   <button key={reason} onClick={() => setSelectedReason(reason)}
                     className={cn(
-                      "flex items-center gap-3 px-3.5 py-2.5 rounded-xl border text-sm text-left transition-all",
+                      "flex items-center gap-2 px-2.5 py-2 rounded-xl border text-xs text-left transition-all",
                       selectedReason === reason
                         ? "border-red-400 bg-red-50 text-red-700 font-medium"
                         : "border-border hover:border-muted-foreground/40 hover:bg-muted/50"
                     )}>
-                    <div className={cn("w-4 h-4 rounded-full border-2 shrink-0 flex items-center justify-center transition-all",
+                    <div className={cn("w-3.5 h-3.5 rounded-full border-2 shrink-0 flex items-center justify-center transition-all",
                       selectedReason === reason ? "border-red-500 bg-red-500" : "border-muted-foreground/40")}>
-                      {selectedReason === reason && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                      {selectedReason === reason && <div className="w-1 h-1 rounded-full bg-white" />}
                     </div>
-                    {reason}
+                    <span className="truncate">{reason}</span>
                   </button>
                 ))}
               </div>

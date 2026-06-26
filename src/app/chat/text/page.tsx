@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { Send, RefreshCw, Flag, ShieldAlert, XCircle, PlusCircle, Loader2, GraduationCap, BookOpen, User as UserIcon } from 'lucide-react';
+import { Send, RefreshCw, Flag, XCircle, PlusCircle, Loader2, GraduationCap, BookOpen, User as UserIcon } from 'lucide-react';
 import { useUser, useFirestore, useDoc } from '@/firebase';
 import { doc, collection, addDoc, onSnapshot, deleteDoc, getDocs, updateDoc, serverTimestamp, query, orderBy } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
@@ -263,7 +263,7 @@ export default function TextChat() {
                 </div>
                 <div className="flex items-center gap-1">
                   <button onClick={() => setReportOpen(true)} className="p-2 rounded-xl hover:bg-red-50 text-muted-foreground hover:text-red-500 transition-colors" title="Report user"><Flag size={16} /></button>
-                  <button onClick={() => setReportOpen(true)} className="p-2 rounded-xl hover:bg-amber-50 text-muted-foreground hover:text-amber-600 transition-colors" title="Report violation"><ShieldAlert size={16} /></button>
+                  
                 </div>
               </div>
             ) : (
@@ -279,7 +279,7 @@ export default function TextChat() {
                 </div>
                 <div className="flex items-center gap-1">
                   <button onClick={() => setReportOpen(true)} className="p-2 rounded-xl hover:bg-red-50 text-muted-foreground hover:text-red-500 transition-colors" title="Report user"><Flag size={16} /></button>
-                  <button onClick={() => setReportOpen(true)} className="p-2 rounded-xl hover:bg-amber-50 text-muted-foreground hover:text-amber-600 transition-colors" title="Report violation"><ShieldAlert size={16} /></button>
+                  
                 </div>
               </div>
             )}

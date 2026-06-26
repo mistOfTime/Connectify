@@ -7,8 +7,8 @@ import { useUser, useFirestore } from '@/firebase';
 import { collection, onSnapshot, doc, updateDoc, deleteDoc, orderBy, query } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
 
-// ── Your admin email ──────────────────────────────────────────────────────────
-const ADMIN_EMAILS = ['bloodycape881@gmail.com'];
+// ── Admin UIDs ───────────────────────────────────────────────────────────────
+const ADMIN_UIDS = ['S6iKp12qgqbcvuYt15NVnITQ1q22'];
 
 type Report = {
   id: string;
@@ -39,7 +39,7 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (!loading && !user) { router.push('/login'); return; }
-    if (!loading && user && !ADMIN_EMAILS.includes(user.email ?? '')) {
+    if (!loading && user && !ADMIN_UIDS.includes(user.uid)) {
       router.push('/');
     }
   }, [user, loading, router]);
@@ -67,7 +67,7 @@ export default function AdminPage() {
   const filtered = filter === 'all' ? reports : reports.filter(r => r.status === filter);
 
   if (loading || !user) return <div className="flex h-screen items-center justify-center"><Loader2 className="h-10 w-10 animate-spin text-primary" /></div>;
-  if (!ADMIN_EMAILS.includes(user.email ?? '')) return null;
+  if (!ADMIN_UIDS.includes(user.uid)) return null;
 
   const counts = {
     all: reports.length,
