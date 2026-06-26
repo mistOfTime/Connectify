@@ -7,6 +7,7 @@ import { useUser, useFirestore, useDoc } from '@/firebase';
 import { doc, collection, addDoc, onSnapshot, deleteDoc, getDocs, updateDoc, serverTimestamp, query, orderBy } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
 import { toast } from '@/hooks/use-toast';
+import { ReportModal } from '@/components/ui/ReportModal';
 
 type Message = {
   id: string;
@@ -34,6 +35,7 @@ export default function TextChat() {
   const [isSearching, setIsSearching] = useState(false);
   const [isChatActive, setIsChatActive] = useState(false);
   const [strangerProfile, setStrangerProfile] = useState<StrangerProfile | null>(null);
+  const [reportOpen, setReportOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const roomIdRef = useRef<string | null>(null);
@@ -48,6 +50,21 @@ export default function TextChat() {
   }, [messages]);
 
   const stopUnsubs = () => { unsubRefs.current.forEach(u => u()); unsubRefs.current = []; };
+
+  const handleSubmitReport = async (reason: string, details: string) => {
+    if (!db || !user) return;
+    await addDoc(collection(db, 'reports'), {
+      reporterUid: user.uid,
+      reporterEmail: user.email || '',
+      reporterName: (profileData as any)?.displayName || user.displayName || 'Unknown',
+      reportedName: strangerProfile?.displayName || 'Stranger',
+      reason,
+      details,
+      status: 'pending',
+      createdAt: serverTimestamp(),
+    });
+    toast({ title: 'Report submitted', description: 'Our team will review it shortly.' });
+  };
 
   const cleanup = useCallback(async () => {
     stopUnsubs();
@@ -244,8 +261,8 @@ export default function TextChat() {
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
-                  <button className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-red-500 transition-colors"><Flag size={14} /></button>
-                  <button className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground transition-colors"><ShieldAlert size={14} /></button>
+                  <button onClick={() => setReportOpen(true)} className="p-2 rounded-xl hover:bg-red-50 text-muted-foreground hover:text-red-500 transition-colors" title="Report user"><Flag size={16} /></button>
+                  <button onClick={() => setReportOpen(true)} className="p-2 rounded-xl hover:bg-amber-50 text-muted-foreground hover:text-amber-600 transition-colors" title="Report violation"><ShieldAlert size={16} /></button>
                 </div>
               </div>
             ) : (
@@ -260,8 +277,8 @@ export default function TextChat() {
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
-                  <button className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-red-500 transition-colors"><Flag size={14} /></button>
-                  <button className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground transition-colors"><ShieldAlert size={14} /></button>
+                  <button onClick={() => setReportOpen(true)} className="p-2 rounded-xl hover:bg-red-50 text-muted-foreground hover:text-red-500 transition-colors" title="Report user"><Flag size={16} /></button>
+                  <button onClick={() => setReportOpen(true)} className="p-2 rounded-xl hover:bg-amber-50 text-muted-foreground hover:text-amber-600 transition-colors" title="Report violation"><ShieldAlert size={16} /></button>
                 </div>
               </div>
             )}
@@ -347,6 +364,13 @@ export default function TextChat() {
           </div>
         </div>
       </main>
+    </div>
+      <ReportModal
+        isOpen={reportOpen}
+        onClose={() => setReportOpen(false)}
+        onSubmit={handleSubmitReport}
+        reportedName={strangerProfile?.displayName || 'Stranger'}
+      />
     </div>
   );
 }
