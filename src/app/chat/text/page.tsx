@@ -200,6 +200,7 @@ export default function TextChat() {
   }
 
   return (
+    <>
     <div className="flex flex-col h-full bg-muted/20 overflow-hidden">
       <header className="h-14 md:h-16 border-b bg-background flex items-center justify-between px-4 shrink-0 z-10">
         <div className="flex items-center gap-2 md:gap-3">
@@ -371,5 +372,6 @@ export default function TextChat() {
       onSubmit={handleSubmitReport}
       reportedName={strangerProfile?.displayName || 'Stranger'}
     />
+    </>
   );
 }
