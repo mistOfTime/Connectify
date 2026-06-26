@@ -365,12 +365,11 @@ export default function TextChat() {
         </div>
       </main>
     </div>
-      <ReportModal
-        isOpen={reportOpen}
-        onClose={() => setReportOpen(false)}
-        onSubmit={handleSubmitReport}
-        reportedName={strangerProfile?.displayName || 'Stranger'}
-      />
-    </div>
+    <ReportModal
+      isOpen={reportOpen}
+      onClose={() => setReportOpen(false)}
+      onSubmit={handleSubmitReport}
+      reportedName={strangerProfile?.displayName || 'Stranger'}
+    />
   );
 }
