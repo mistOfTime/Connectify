@@ -1,0 +1,28 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-bg",
+      "description": "Abstract technological connection background",
+      "imageUrl": "https://picsum.photos/seed/connectify-hero/1200/800",
+      "imageHint": "technology connection"
+    },
+    {
+      "id": "feature-chat",
+      "description": "Two people chatting on mobile devices",
+      "imageUrl": "https://picsum.photos/seed/chat-feature/600/400",
+      "imageHint": "chatting people"
+    },
+    {
+      "id": "feature-video",
+      "description": "Video call interface on a laptop",
+      "imageUrl": "https://picsum.photos/seed/video-feature/600/400",
+      "imageHint": "video call"
+    },
+    {
+      "id": "security-shield",
+      "description": "Safety and security shield concept",
+      "imageUrl": "https://picsum.photos/seed/safety-feature/600/400",
+      "imageHint": "safety security"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "User profile information including university and course details.",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "The user's display name"
+        },
+        "university": {
+          "type": "string",
+          "description": "The university the user attends"
+        },
+        "course": {
+          "type": "string",
+          "description": "The course the user is taking"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "The URL or Base64 data of the user's profile picture"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the profile was last updated"
+        }
+      },
+      "required": ["university", "course"]
+    }
+  },
+  "auth": {
+    "providers": ["google.com", "password", "anonymous"]
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Stores user profile data"
+    }
+  }
+}

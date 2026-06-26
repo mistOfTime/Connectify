@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Blue rounded square background -->
+  <rect width="32" height="32" rx="8" fill="#6366f1"/>
+  <!-- MessageSquare icon (white) -->
+  <path d="M6 8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H11l-5 4V8z" fill="white"/>
+  <!-- Chat dots -->
+  <circle cx="11" cy="14" r="1.2" fill="#6366f1"/>
+  <circle cx="16" cy="14" r="1.2" fill="#6366f1"/>
+  <circle cx="21" cy="14" r="1.2" fill="#6366f1"/>
+</svg>

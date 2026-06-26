@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Users can read/write their own profile
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Video chat rooms - any authenticated user can create/read/delete
+    match /videoChatRooms/{roomId} {
+      allow read, write, delete: if request.auth != null;
+
+      // ICE candidates and messages subcollections
+      match /offerCandidates/{doc} {
+        allow read, write: if request.auth != null;
+      }
+      match /answerCandidates/{doc} {
+        allow read, write: if request.auth != null;
+      }
+      match /messages/{msg} {
+        allow read, write: if request.auth != null;
+      }
+    }
+
+    // Text chat rooms - any authenticated user can create/read/delete
+    match /textChatRooms/{roomId} {
+      allow read, write, delete: if request.auth != null;
+
+      match /messages/{msg} {
+        allow read, write: if request.auth != null;
+      }
+    }
+  }
+}
