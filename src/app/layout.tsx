@@ -21,8 +21,9 @@ export const metadata: Metadata = {
     description: 'Connect with strangers instantly via text or video chat.',
   },
   icons: {
-    icon: [{ url: '/favicon.svg?v=4', type: 'image/svg+xml' }],
-    shortcut: '/favicon.svg?v=4',
+    icon: [{ url: '/favicon.svg?v=5', type: 'image/svg+xml' }],
+    shortcut: '/favicon.svg?v=5',
+    apple: '/favicon.svg?v=5',
   },
 };
 
@@ -34,8 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4" />
-        <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg?v=4" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+        <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+        <link rel="apple-touch-icon" href="/favicon.svg?v=5" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@100..900&display=swap" rel="stylesheet" />
