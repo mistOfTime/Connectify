@@ -38,21 +38,7 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-headline font-bold text-sm mb-4">Connect</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="https://www.instagram.com/freedom15073/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                  <Instagram size={14} /> @freedom15073
-                </Link>
-              </li>
-              <li>
-                <Link href="https://github.com/mistOfTime/Connectify" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                  GitHub
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <div />
         </div>
 
         <div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
