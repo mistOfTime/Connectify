@@ -71,11 +71,24 @@ export default function VoiceChat() {
         const answer = await pc.createAnswer(); await pc.setLocalDescription(answer);
         socket.emit('answer', { roomId, answer, to: from });
       });
+      // Buffer ICE candidates before remote description is set
+      const iceCandidateBuffer: RTCIceCandidateInit[] = [];
+      let remoteSet = false;
       socket.on('answer', async ({ answer }: any) => {
-        if (pcRef.current) await pcRef.current.setRemoteDescription(new RTCSessionDescription(answer)).catch(() => {});
+        if (pcRef.current) {
+          await pcRef.current.setRemoteDescription(new RTCSessionDescription(answer)).catch(() => {});
+          remoteSet = true;
+          for (const c of iceCandidateBuffer) { pcRef.current.addIceCandidate(new RTCIceCandidate(c)).catch(() => {}); }
+          iceCandidateBuffer.length = 0;
+        }
       });
       socket.on('ice-candidate', async ({ candidate }: any) => {
-        if (pcRef.current && candidate) pcRef.current.addIceCandidate(new RTCIceCandidate(candidate)).catch(() => {});
+        if (!candidate) return;
+        if (pcRef.current && remoteSet) {
+          pcRef.current.addIceCandidate(new RTCIceCandidate(candidate)).catch(() => {});
+        } else {
+          iceCandidateBuffer.push(candidate);
+        }
       });
       socket.on('chat-message', ({ text, avatar, name }: any) => {
         setMessages(p => [...p, { text, self: false, avatar, name }]);
