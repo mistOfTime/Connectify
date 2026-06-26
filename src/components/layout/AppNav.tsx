@@ -105,23 +105,13 @@ export function AppNav({ children }: { children: React.ReactNode }) {
       </header>
 
       {/* ── MOBILE TOP BAR ───────────────────────────────────────── */}
-      <header className="md:hidden h-14 border-b bg-background/95 backdrop-blur-sm shrink-0 flex items-center justify-between px-4 z-50">
+      <header className="md:hidden h-14 border-b bg-background/95 backdrop-blur-sm shrink-0 flex items-center px-4 z-50">
         <Link href="/" className="flex items-center gap-2 group">
           <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center text-white">
             <MessageSquare size={14} />
           </div>
           <span className="font-headline font-bold text-base">Connectify</span>
         </Link>
-        {user && (
-          <Link href="/profile">
-            <Avatar className="w-8 h-8 border border-primary/20">
-              <AvatarImage src={profileImage} className="object-cover" />
-              <AvatarFallback className="bg-primary/10 text-primary text-xs font-bold">
-                {profileName[0]?.toUpperCase() || 'U'}
-              </AvatarFallback>
-            </Avatar>
-          </Link>
-        )}
       </header>
 
       {/* ── PAGE CONTENT ─────────────────────────────────────────── */}
