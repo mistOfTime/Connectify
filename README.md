@@ -4,7 +4,7 @@ A modern real-time random chat platform built with Next.js and Firebase. Connect
 
 ## 🚀 Live Features
 
-- **Real-time Video Chat** — WebRTC peer-to-peer video with mic/camera controls, country filter, and gender selector
+
 - **Real-time Text Chat** — Firestore-powered instant messaging with stranger matching
 - **User Profiles** — Customizable display name, profile photo, university, and course
 - **Live Online Counter** — Real-time presence tracking showing active users
@@ -20,7 +20,6 @@ A modern real-time random chat platform built with Next.js and Firebase. Connect
 | Styling | [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/) |
 | Database | [Firebase Firestore](https://firebase.google.com/docs/firestore) |
 | Auth | [Firebase Authentication](https://firebase.google.com/docs/auth) |
-| Video | [WebRTC](https://webrtc.org/) (peer-to-peer, STUN servers) |
 | Fonts | Space Grotesk + Inter (Google Fonts) |
 | Icons | [Lucide React](https://lucide.dev/) |
 | Deployment | [Firebase App Hosting](https://firebase.google.com/docs/app-hosting) |
@@ -114,7 +113,6 @@ Open [http://localhost:9002](http://localhost:9002)
 | `/login` | Sign in with Google or Email |
 | `/profile` | Customize name, photo, university, course |
 | `/chat/text` | Real-time text chat with strangers |
-| `/chat/video` | WebRTC video + audio chat |
 | `/safety` | Community rules and safety tips |
 | `/faq` | Help center |
 
