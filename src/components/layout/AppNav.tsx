@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Home, MessageSquare, Mic, Users, Shield, LogOut, User, LogIn, ShieldAlert } from 'lucide-react';
+import { Home, MessageSquare, Users, Shield, LogOut, User, LogIn, ShieldAlert } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import { useUser, useAuth, useFirestore, useDoc } from '@/firebase';
@@ -16,7 +16,6 @@ const ADMIN_UID = 'S6iKp12qgqbcvuYt15NVnITQ1q22';
 const navItems = [
   { name: 'Home',       href: '/',            icon: Home },
   { name: 'Text Chat',  href: '/chat/text',   icon: MessageSquare },
-  { name: 'Voice Chat', href: '/chat/voice',  icon: Mic },
   { name: 'Discover',   href: '/discover',    icon: Users },
   { name: 'Safety',     href: '/safety',      icon: Shield },
 ];

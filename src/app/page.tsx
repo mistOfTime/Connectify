@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import { MessageSquare, Video, Shield, Zap, Globe, Users, Loader2, Mic } from 'lucide-react';
+import { MessageSquare, Video, Shield, Zap, Globe, Users, Loader2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useUser, useFirestore } from '@/firebase';
@@ -99,8 +99,8 @@ export default function Home() {
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" className="h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-bold gap-2 w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary/5" asChild>
-                  <Link href="/chat/voice">
-                    <Mic size={18} className="sm:size-5" /> Voice Chat
+                  <Link href="/discover">
+                    <Users size={18} className="sm:size-5" /> Discover People
                   </Link>
                 </Button>
               </div>
@@ -146,14 +146,14 @@ export default function Home() {
                   <div className="relative h-52 sm:h-56 w-full">
                     <Image 
                       src="https://i.pinimg.com/736x/31/d7/54/31d7541ba0746c7ecaa41e6b57281925.jpg" 
-                      alt="Voice Chat" 
+                      alt="Discover People" 
                       fill 
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="p-5 sm:p-6 space-y-2">
-                    <h3 className="font-headline font-bold text-lg sm:text-xl">Voice Chat</h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground">Crystal clear P2P voice chat with random strangers. No camera needed — just your voice, instant connection.</p>
+                    <h3 className="font-headline font-bold text-lg sm:text-xl">Discover People</h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Browse real online users, see their university and course, and start a conversation with anyone who catches your interest.</p>
                   </div>
                 </CardContent>
               </Card>

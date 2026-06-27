@@ -75,6 +75,11 @@ io.on('connection', (socket) => {
     io.to(to).emit('ice-candidate', { roomId, candidate, from: socket.id });
   });
 
+  // Relay audio chunk (server-side audio relay - bypasses TURN/NAT issues)
+  socket.on('audio-chunk', ({ to, chunk }) => {
+    io.to(to).emit('audio-chunk', { chunk, from: socket.id });
+  });
+
   // Chat message relay
   socket.on('chat-message', ({ roomId, text, to, avatar, name }) => {
     io.to(to).emit('chat-message', { text, avatar, name, from: socket.id });
