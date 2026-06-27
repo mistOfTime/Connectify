@@ -1,6 +1,6 @@
 # Connectify
 
-A modern real-time random chat platform built with Next.js and Firebase. Connect with strangers around the world via text or video chat.
+A modern real-time random chat platform built with Next.js and Firebase. Connect with strangers around the world via text.
 
 ## 🚀 Live Features
 
