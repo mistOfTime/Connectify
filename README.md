@@ -71,30 +71,7 @@ Enable these Firebase services:
 - **Firestore** — with the following rules:
 
 ```
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /users/{userId} {
-      allow read: if true;
-      allow create, update: if request.auth != null && request.auth.uid == userId;
-      allow delete: if request.auth != null && request.auth.uid == userId;
-    }
-    match /videoChatRooms/{roomId} {
-      allow read, write, delete: if request.auth != null;
-      match /offerCandidates/{doc} { allow read, write: if request.auth != null; }
-      match /answerCandidates/{doc} { allow read, write: if request.auth != null; }
-      match /messages/{msg} { allow read, write: if request.auth != null; }
-    }
-    match /textChatRooms/{roomId} {
-      allow read, write, delete: if request.auth != null;
-      match /messages/{msg} { allow read, write: if request.auth != null; }
-    }
-    match /presence/{userId} {
-      allow read: if request.auth != null;
-      allow write, delete: if request.auth != null && request.auth.uid == userId;
-    }
-  }
-}
+
 ```
 
 ### 4. Run locally
